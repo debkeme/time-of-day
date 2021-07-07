@@ -68,28 +68,82 @@
 			</ul>
 		</nav>
 	</header>
+	<h2 id="greeting">Greeting goes here</h2>
     <main>
 	 <header><h3>A Javascript Example by Deb Keme </h3></header>
-	 <p>This a web page that uses javascript to determine the current hour, and presents a different image, custom message, and color based on each of the following times of day!  </p>
+	 <p>This a web page that uses javascript to determine the current hour, 
+		 and presents a different image, custom message, and color based on each of 
+		 the following times of day!  </p>
 	 <p> 
 		 <ul>
-			 <li> Morning (5am to 12 noon)</li>
+			 <li>Morning (5am to 12 noon)</li>
 			 <li>Afternoon (12 noon to 6pm)</li>
-			 <li>Evening (6pm to 11pm)/li>
+			 <li>Evening (6pm to 11pm)</li>
 			 <li>Night (11pm to 5am)</li>
 
 		 </ul>
 	 </p>
-	 <p>The LIST elements inside the NAV are displayed inline by setting the display to be inline-block.  Bullets are removed by setting the UL to display</p>
-	 <p>The FOOTER includes a clear:both to keep everything above it!</p>
-	  <img src="http://dummyimage.com/300x400" alt="Picture of Me!" class="flexible" />
+	 <p></p>
+	 <p></p>
+	  <img id=pic src="http://dummyimage.com/300x400" alt="Picture of Me!" class="flexible" />
      </main>
     <footer>
-      <small>&copy; 2013, All Rights Reserved ~
+      <small>&copy; 2020 - <span id="copyright"> copyright goes here</span>, All Rights Reserved ~
       <a href="https://validator.w3.org/check/referer" target="_blank">Valid HTML</a> ~
       <a href="https://jigsaw.w3.org/css-validator/check?uri=referer" target="_blank">Valid CSS</a>
       </small>
     </footer>
-    <!-- END Footer -->
+  	<script>
+
+   		let myDate = new Date();
+
+		let myText ='';
+		let myColor ='';
+		let myPic = '';
+		
+
+		let myHour = myDate.getHours();
+		 
+		//LINE BELOW FOR TESTING -- REMOVE B4 PLAACING IN SERVICE
+
+		//myHour= 3;
+
+		if(myHour >= 5  && myHour <12){
+			myText= "Good Morning!";
+			myColor= "red";
+			myPic = "images/morning.jpg";
+		
+
+
+		}else if(myHour >= 12  && myHour <18){
+			myText= "Good Afternoon!";
+			myColor="green";
+			myPic = "images/afternoon.jpg";
+
+		}else if(myHour >= 18  && myHour <23){
+			myText= "Good Evening!";
+			myColor="green";
+			myPic = "images/evening.jpg";
+
+		}else{
+			myText= "Goodnight!";
+			myColor="purple";
+			myPic = "images/afternoon.jpg";
+		
+		
+		}
+
+
+		//console.log(myText);
+		
+		document.getElementById('greeting').innerHTML = myText;
+		document.getElementById('greeting').style.color = myColor;
+		document.querySelector("html").style.backgroundColor= myColor;
+		document.getElementById('pic').src = myPic;
+
+		let myYear = myDate.getFullYear();
+		document.getElementById('copyright').innerHTML = myYear; 
+
+	</script>
 </body>
 </html>
